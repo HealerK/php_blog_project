@@ -11,7 +11,7 @@
                         <!-- Box Comment -->
                         <div class="card card-widget">
                             <div class="card-header">
-                                <div class="card-title" style="float: none;">
+                                <div class="card-title" style="float:none!important;">
                                     <h1 style="text-align: center !important;">Card Title</h1>
                                 </div>
                             </div>
