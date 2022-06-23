@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['username'] = $user['name'];
             $_SESSION['logged_in'] = time();
 
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
     }
     echo "<script>alert('Incorrect Candiential');</script>";
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="login.php" method="post">
+                <form action="" method="post">
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">

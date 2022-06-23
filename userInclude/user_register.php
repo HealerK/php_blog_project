@@ -2,6 +2,7 @@
 session_start();
 require_once "../Config/config.php";
 if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password  = $_POST['password'];
 
@@ -13,15 +14,18 @@ if (isset($_POST['submit'])) {
     $sql->execute();
     $user = $sql->fetch(PDO::FETCH_ASSOC);
     if ($user) {
-        if ($user['password'] == $password) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['name'];
-            $_SESSION['logged_in'] = time();
-
-            header('Location: index.php');
+        echo "<script>alert('Email Duplicated!');</script>";
+    } else {
+        $sql = $pdo->prepare("INSERT INTO users(name,email,password) VALUES (:name,:email,:password)");
+        $result = $sql->execute(
+            array(
+                ':name' => $name, ':email' => $email, ':password' => $password
+            )
+        );
+        if ($result) {
+            echo "<script>alert('Successfully Registered.Now You can login!');window.location.href='user_login.php';</script>";
         }
     }
-    echo "<script>alert('Incorrect Candiential');</script>";
 }
 ?>
 
@@ -52,7 +56,7 @@ if (isset($_POST['submit'])) {
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="login.php" method="post">
+                <form action="" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Name">
                         <div class="input-group-append">

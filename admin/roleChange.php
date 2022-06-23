@@ -66,7 +66,7 @@ if (empty($_SESSION['user_id']) && empty($_SESSION['logged_in'])) {
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Admin Control Table</h3>
+              <h3 class="card-title">Role Control Table</h3>
             </div>
 
             <div class="card-body">
